@@ -1,2 +1,2 @@
-/api/googleToken
+/api/g00gleToken
 retourne le token
