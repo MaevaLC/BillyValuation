@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 /api/g11gleToken
+=======
+/api/g00gleToken
+>>>>>>> 607f3fd0ff7ffbed57dd000a90a15425c92f70f1
 retourne le token
