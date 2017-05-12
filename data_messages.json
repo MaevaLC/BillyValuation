@@ -1,0 +1,853 @@
+{
+    "result": [
+        {
+            "row_position": 2,
+            "text": "Cr\u00e9er un support vert type tablette \u00e0 donner \u00e0 chaque foyer pour les d\u00e9chets \u00e0 collecter et pour l'\u00e9valuation et l'\u00e9volution du compost (lesupport devant \u00eatre simple pour diff\u00e9rentes personnes)",
+            "column_position": 1,
+            "id": 106,
+            "auteur_id": 21,
+            "datemodification": "2017-05-04T15:27:02.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Mise \u00e0 disposition du compost issu du compostage collectif aux usagers de jardins partag\u00e9s et aux r\u00e9sident pour les insister \u00e0 l apport volontaire et mise \u00e0 disposition d un guide sur la qualit\u00e9.",
+            "column_position": 0,
+            "id": 105,
+            "auteur_id": 33,
+            "datemodification": "2017-05-04T13:51:30.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Cr\u00e9er ou encourager des dynamiques \u00e0 l'\u00e9chelle de quartiers en s'appuyant sur les associations et structures locales et autour de projets li\u00e9s \u00e0 l'alimentation et au jardinage",
+            "column_position": 4,
+            "id": 104,
+            "auteur_id": 26,
+            "datemodification": "2017-05-04T13:51:06.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "",
+            "column_position": 4,
+            "id": 103,
+            "auteur_id": 11,
+            "datemodification": "2017-05-04T13:51:03.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Cr\u00e9ation d'un label valid\u00e9 par la dreal \"K-li-T compost\" pour du compost issu de biodechet de mara\u00eecher",
+            "column_position": 5,
+            "id": 102,
+            "auteur_id": 27,
+            "datemodification": "2017-05-04T13:50:49.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Caract\u00e9riser compost pour r\u00e9pondre \u00e0 la norme NFU 44051 : d\u00e9tecter en amont si biod\u00e9chets apport\u00e9s par usagers sont conformes = d\u00e9tecteur - sonde d'ind\u00e9sirables ? Analyser en cours de fermentation - maturation param\u00e8tres t\u00b0,... En aval = ensemble",
+            "column_position": 0,
+            "id": 101,
+            "auteur_id": 31,
+            "datemodification": "2017-05-04T13:50:39.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Limiter la source \u00e0 une seule sorte de structure exemple ecole",
+            "column_position": 5,
+            "id": 100,
+            "auteur_id": 6,
+            "datemodification": "2017-05-04T13:50:35.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Transformer le compost en alimentation humaine en fonction des instants selon la logique des cubes (liebig' Maggi)",
+            "column_position": 0,
+            "id": 99,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:50:33.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Appli d'aide au tri des biodechets et compostage avec syst\u00e8me de photos",
+            "column_position": 0,
+            "id": 98,
+            "auteur_id": 28,
+            "datemodification": "2017-05-04T13:50:31.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Sorte de boutique \u00e0 d\u00e9chets en ville o\u00f9 la qualit\u00e9 est contr\u00f4l\u00e9e par un agent de la collectivit\u00e9 ou priv\u00e9 (mutualisation point info, mairie de quartier, restaurant volontaire ou autres...)",
+            "column_position": 0,
+            "id": 97,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:49:51.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Pour les cantines ou les habitants qui ont l'habitude de commander des paniers  ou d'aller ramasser eux m\u00eames leurs fruits, l\u00e9gumes (amap, r\u00e9seau agriculteurs locaux), imaginer un syst\u00e8me reverse o\u00f9 l'agriculteur peut r\u00e9cup\u00e9rer le compost produit (en partie par les \u00e9pluchures de ses fruits et l\u00e9gumes) !",
+            "column_position": 2,
+            "id": 96,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:49:42.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Poubelle \u00e0 biodechets \"intelligente\" avec application smartphone qui convertit les kg jet\u00e9s en quantit\u00e9 de compost potentiellement productible ",
+            "column_position": 1,
+            "id": 95,
+            "auteur_id": 19,
+            "datemodification": "2017-05-04T13:49:11.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Cliquer sur le d\u00e9chet introduit dans le composteur et saisir la quantit\u00e9 et calcul automatique des besoins du composteur",
+            "column_position": 1,
+            "id": 94,
+            "auteur_id": 3,
+            "datemodification": "2017-05-04T13:49:07.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Adaptation des march\u00e9s publics de fournitures de denr\u00e9es alimentaires pr la restauration collective, avec une compensation \u00e9conomique pr les volumes de compost fournis aux producteurs locaux",
+            "column_position": 2,
+            "id": 93,
+            "auteur_id": 28,
+            "datemodification": "2017-05-04T13:48:53.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "",
+            "column_position": 5,
+            "id": 92,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:48:46.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Plateforme de mise en relation d'agriculteurs et de particulier pour \u00e9change de compost contre l\u00e9gumes ?",
+            "column_position": 2,
+            "id": 91,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:48:41.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Bonus financier ou bons d'achats pour les bons \u00e9l\u00e8ves si apport en d\u00e9ch\u00e8terie par exemple.",
+            "column_position": 4,
+            "id": 90,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:48:32.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "D\u00e9finir des zone peri-urbaines o\u00f9 valoriser des gisements de mati\u00e8res organiques qui peuvent aussi \u00eatre tampon avant distribution aux acteurs de l'agriculture urbaine ",
+            "column_position": 5,
+            "id": 89,
+            "auteur_id": 12,
+            "datemodification": "2017-05-04T13:48:14.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "\u00c9quiper les composteurs de sondes\\capteurs ou faire des contr\u00f4les pour caract\u00e9riser le compost  : temp\u00e9rature, humidit\u00e9, taux de pesticides,  etc.",
+            "column_position": 2,
+            "id": 88,
+            "auteur_id": 13,
+            "datemodification": "2017-05-04T13:48:04.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Pes\u00e9e de l'apport Hebdo via capteur",
+            "column_position": 1,
+            "id": 87,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:48:01.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Disposer d'un kit analyse sommaire du compost connect\u00e9 pour valider ou non l'utilisation en agriculture biologique du compost",
+            "column_position": 0,
+            "id": 86,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:47:32.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Proposer au producteur de biodechet les produits de l'agriculture obtenus avec ses d\u00e9chets. \r\nSous forme de bon d'achats.,. ",
+            "column_position": 4,
+            "id": 85,
+            "auteur_id": 9,
+            "datemodification": "2017-05-04T13:47:29.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Installer une collecte des compostes m\u00fbres des usagers de instaurer un contr\u00f4le qualit\u00e9  sur les volumes m\u00e9lang\u00e9s (=dilution)",
+            "column_position": 5,
+            "id": 84,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:47:21.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Bon achat circuit court ",
+            "column_position": 4,
+            "id": 83,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:47:08.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Pas une idee, mais une remarque, pour l'instant la l\u00e9gislation dit que le compost doit \u00eatre obligatoirement utilis\u00e9 l\u00e0 o\u00f9 il est produit et par ce qui ont \u00e9t\u00e9 acteur de son fonctionnement (en gros que les personnes qui viennent \"alimentrt\" le composteur ",
+            "column_position": 0,
+            "id": 82,
+            "auteur_id": 14,
+            "datemodification": "2017-05-04T13:46:52.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Cr\u00e9er une plateforme permettant de mettre en relation les particulers produisant du compost et les petites association type amap ayant un besoin. Les particuliers pourrait \u00eatre r\u00e9tribuer avec des produits de l association.\r\n",
+            "column_position": 2,
+            "id": 81,
+            "auteur_id": 24,
+            "datemodification": "2017-05-04T13:46:45.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Suivre la qualit\u00e9 du processus de compostage pour attester de l'hygienisation (r\u00e8glementation). Des analyses ponctuelles et non syst\u00e9matiques des composts produits.",
+            "column_position": 1,
+            "id": 80,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:46:41.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Si corr\u00e9lation densit\u00e9/flux :Outil pr mesurer la densit\u00e9 ??? Taux d'humidit\u00e9 ? ",
+            "column_position": 3,
+            "id": 79,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:46:34.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Tinder entre les 2",
+            "column_position": 2,
+            "id": 78,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:46:23.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Sur les territoires p\u00e9ri urbain mettre en relation les agriculteurs proches utilisant du compost et les habitants de collectifs et inciter les agriculteurs \u00e0 accepter les bio d\u00e9chets de ses habitants \r\nDouble int\u00e9r\u00eat avec r\u00e9duction \u00e0 la source des bio d\u00e9chets et commercial pour l agriculteur",
+            "column_position": 3,
+            "id": 77,
+            "auteur_id": 6,
+            "datemodification": "2017-05-04T13:46:18.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Sur une plateforme de compostage, distribuer le compost sous la forme de Drive ou de bornes libre service (\u00e0 l'avantage d'\u00eatre ouvert 24/24h)",
+            "column_position": 5,
+            "id": 76,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:46:16.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "D\u00e9veloppement de kits de test compost rapide qui permettent d'identifier la qualit\u00e9 du compost et donc son destinataire final potentiel ? Existe peut-\u00eatre d\u00e9j\u00e0",
+            "column_position": 0,
+            "id": 75,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:46:05.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "D\u00e9velopper des fili\u00e8res sp\u00e9cifiques avec R&D pour valorisation avec haute valeur ajout\u00e9e",
+            "column_position": 5,
+            "id": 74,
+            "auteur_id": 31,
+            "datemodification": "2017-05-04T13:45:28.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Partenariats GMS\\collectivit\u00e9 pour mettre en place un collecteur de biodechet sur parking et avec un syst\u00e8me de bon de r\u00e9duction pour l'hypermarch\u00e9",
+            "column_position": 4,
+            "id": 73,
+            "auteur_id": 27,
+            "datemodification": "2017-05-04T13:45:01.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Edition d un guide",
+            "column_position": 0,
+            "id": 72,
+            "auteur_id": 33,
+            "datemodification": "2017-05-04T13:44:57.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Tri m\u00e9canique des d\u00e9chets pour retirer le plastique avant compostage ou m\u00e9thanisation, limiter le plastique.",
+            "column_position": 3,
+            "id": 71,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:44:49.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Collecte en bi flux pour bio dechets/ ordures m\u00e9nag\u00e8res standard",
+            "column_position": 0,
+            "id": 70,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:44:27.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Chaque d\u00e9p\u00f4t de biodechets dans un composteur donne acc\u00e8s au niveau sup\u00e9rieur d'un jeu vid\u00e9o",
+            "column_position": 4,
+            "id": 69,
+            "auteur_id": 25,
+            "datemodification": "2017-05-04T13:44:08.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Visualisation en temps r\u00e9el de l'avancement du processus de compost gr\u00e2ce \u00e0 l' Iot",
+            "column_position": 1,
+            "id": 68,
+            "auteur_id": 10,
+            "datemodification": "2017-05-04T13:44:07.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "n\u00e9cessit\u00e9 d'une stabilisation chimique ou biochimique des biod\u00e9chets chez le particulier pour organiser collecte hebdomadaire",
+            "column_position": 5,
+            "id": 67,
+            "auteur_id": 22,
+            "datemodification": "2017-05-04T13:44:06.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Incitation financi\u00e8re par paiement \u00e0 la lev\u00e9e des bacs ",
+            "column_position": 5,
+            "id": 66,
+            "auteur_id": 12,
+            "datemodification": "2017-05-04T13:43:54.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Des collecteurs d'huile v\u00e9g\u00e9tale usag\u00e9e qui distribuent des r\u00e9cipients vides quand on am\u00e8ne un plein et qui peuvent aussi distribuer des bons d'achat par exemple",
+            "column_position": 4,
+            "id": 65,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:43:42.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "R\u00e9seau social d\u00e9di\u00e9 pour les lieux \u00e9quip\u00e9s de compostage partag\u00e9 collectif / pied d'immeubles voire PAV : application avec r\u00e9compenses proportionnellement aux biod\u00e9chtes d\u00e9pos\u00e9s.",
+            "column_position": 4,
+            "id": 64,
+            "auteur_id": 31,
+            "datemodification": "2017-05-04T13:43:37.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Favoriser la mise \u00e0 disposition de broyats ou paillage pour les particuliers",
+            "column_position": 2,
+            "id": 63,
+            "auteur_id": 20,
+            "datemodification": "2017-05-04T13:43:36.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Les sites de compostage de proximit\u00e9 peuvent \u00eatre g\u00e9r\u00e9s par des agents form\u00e9s (cr\u00e9ation d'emplois locaux). Pour les usagers le geste s'apparente \u00e0 de l'apport volontaire. Le compost peut \u00eatre utilis\u00e9 par les usagers localement pour reverdir les espaces (am\u00e9nagement du territoire).",
+            "column_position": 4,
+            "id": 62,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:43:35.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Cr\u00e9er une bourse de biodechets des gros producteurs \u00e0 partir de la typologie des d\u00e9chets pour valider le type de pr\u00e9traitement le plus performant (pr\u00e9traitement mobile sur camion) et orienter ensuite vers l'utilisateur final",
+            "column_position": 2,
+            "id": 61,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:43:21.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Contrepartie en fruits et l\u00e9gumes ou cofinancement d'un seau de collecte pour encourager les apports volontaires en biod\u00e9chets",
+            "column_position": 4,
+            "id": 60,
+            "auteur_id": 13,
+            "datemodification": "2017-05-04T13:43:10.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Placer une ribambelle de capteur et autres pour suivre les stades \"en semi direct\", montrer concr\u00e8tement les actions et le rendement qu'ont puissent avoir avec du compost\r\n",
+            "column_position": 1,
+            "id": 59,
+            "auteur_id": 14,
+            "datemodification": "2017-05-04T13:42:57.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Rencontre et passation directe des biodechets des habitants aux producteurs (ex AMAPs), avec valorisation sur site de production",
+            "column_position": 0,
+            "id": 58,
+            "auteur_id": 28,
+            "datemodification": "2017-05-04T13:42:54.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Moyen de collecte proche de g\u00e9n\u00e9rateur de d\u00e9chet mais mutualis\u00e9 pour \u00eatre viable",
+            "column_position": 5,
+            "id": 57,
+            "auteur_id": 10,
+            "datemodification": "2017-05-04T13:42:45.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Spots publicitaires de formation aux heures de grande audience plut\u00f4t que d'autres programmes lobotomisation..",
+            "column_position": 5,
+            "id": 56,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:42:24.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "D\u00e9velopper un service de broyage de d\u00e9chet vert de jardin par quartier ",
+            "column_position": 3,
+            "id": 55,
+            "auteur_id": 27,
+            "datemodification": "2017-05-04T13:42:14.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Si fili\u00e8re de traitement mature sur le territoire ou \u00e0 proximit\u00e9 mettre en place une collecte plurimateriaux avec mise en relation du collecteur et du producteur par une application.possibilite de mutualiser cette collecte sur plusieurs intercos",
+            "column_position": 1,
+            "id": 54,
+            "auteur_id": 6,
+            "datemodification": "2017-05-04T13:42:09.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Le particulier informe le service de collecte du besoin de collecter son conteneur d\u00e9chet via son smartphone.\r\nLe conteneur d\u00e9chet disposant d'une puce permet de contr\u00f4ler la fiabilit\u00e9 du syst\u00e8me.",
+            "column_position": 2,
+            "id": 53,
+            "auteur_id": 9,
+            "datemodification": "2017-05-04T13:41:55.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Proposer un mat\u00e9riel de pr\u00e9 collecte qui ralentit la fermentation des d\u00e9chets organiques (a\u00e9ration, mat\u00e9riaux adapt\u00e9s...) Dans le but de ne pas freiner les utilisateurs \u00e0 cause des odeurs",
+            "column_position": 5,
+            "id": 52,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:41:54.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Broyeur en lien avec composteur",
+            "column_position": 3,
+            "id": 51,
+            "auteur_id": 3,
+            "datemodification": "2017-05-04T13:41:51.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Plateforme de mise en relation producteur d\u00e9chet sp\u00e9cifique et point de d\u00e9p\u00f4t p\u00e9riodique ou point de regroupement chez un plus gros producteur. Exemple : je mange des huitres, je mets les coquilles \u00e0 part et je cherche sur la plateforme o\u00f9 aura lieu la prochaine collecte la plus proche de chez moi. ",
+            "column_position": 2,
+            "id": 50,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:41:50.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Trouver un r\u00e9f\u00e9rent qui ferait le tour du quartier pr la collecte des flux et qui serait r\u00e9mun\u00e9r\u00e9 en l apportant \u00e0 la d\u00e9chetterie par ex (contr\u00f4le de la qualite des entrants primordial)",
+            "column_position": 4,
+            "id": 49,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:41:48.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "",
+            "column_position": 1,
+            "id": 48,
+            "auteur_id": 21,
+            "datemodification": "2017-05-04T13:41:09.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "",
+            "column_position": 1,
+            "id": 47,
+            "auteur_id": 21,
+            "datemodification": "2017-05-04T13:41:05.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Developper une application comme celle \"Too good to go\" pour lutter contre le gaspillage alimentaire.\r\n\r\nMise en relation directe producteur avec une startup",
+            "column_position": 2,
+            "id": 46,
+            "auteur_id": 27,
+            "datemodification": "2017-05-04T13:40:59.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "collecte payante des OM, co\u00fbt moindre ou nul pour collecte des recyclables et des biod\u00e9chets. Tra\u00e7abilit\u00e9 obligatoire pour \u00e9viter probl\u00e8me de qualit\u00e9 du tri.",
+            "column_position": 4,
+            "id": 45,
+            "auteur_id": 22,
+            "datemodification": "2017-05-04T13:40:54.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Contrepartie mat\u00e9rielle (r\u00e9colte)",
+            "column_position": 4,
+            "id": 44,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:40:32.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Tourn\u00e9e organis\u00e9e en fonction du trafic et du taux de remplissage via le flashcode",
+            "column_position": 1,
+            "id": 43,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:40:21.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Gain financier au retour des d\u00e9chets.",
+            "column_position": 4,
+            "id": 42,
+            "auteur_id": 10,
+            "datemodification": "2017-05-04T13:40:01.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Dispositif de pes\u00e9e des d\u00e9p\u00f4ts de biodechets en conteneurs s\u00e9lectifs ou composteurs et calcul de l'impact sur la facture de redevance d'enl\u00e8vement des d\u00e9chets",
+            "column_position": 4,
+            "id": 41,
+            "auteur_id": 20,
+            "datemodification": "2017-05-04T13:39:57.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Accompagner des projets, pour les mettre en avant aupr\u00e8s des citoyens plus r\u00e9ticents. La communication c'est la cl\u00e9 !",
+            "column_position": 4,
+            "id": 40,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:39:18.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Gestion des intrants par smartphone \u00e0 partir de photos des biodechets pour valider ou non la qualit\u00e9 du compost produit",
+            "column_position": 0,
+            "id": 39,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:39:17.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Retour au distributeur ",
+            "column_position": 2,
+            "id": 38,
+            "auteur_id": 3,
+            "datemodification": "2017-05-04T13:39:08.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Mettre en place diff\u00e9rent bac \u00e0 \"poubelle\" (oui je sais tr\u00e8s chiant), et proc\u00e9der \u00e0 des apports volontaire ou ramassage en porte \u00e0 porte ",
+            "column_position": 3,
+            "id": 37,
+            "auteur_id": 14,
+            "datemodification": "2017-05-04T13:39:02.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Mettre en place des points de collecte dans les centres commerciaux et de fort passage, avec r\u00e9tribution % apport",
+            "column_position": 4,
+            "id": 36,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:38:50.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Capteurs sur compost pour l'\u00e9valuer ( acidit\u00e9, t\u00b0, masse, etc...)",
+            "column_position": 1,
+            "id": 35,
+            "auteur_id": 10,
+            "datemodification": "2017-05-04T13:38:34.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Installation de composteurs collectifs par quartier g\u00e9rer par le service espace vert (cr\u00e9ation de la brigade compostage)\r\n\r\nR\u00e9utilisation du compost par service espace vert",
+            "column_position": 5,
+            "id": 34,
+            "auteur_id": 27,
+            "datemodification": "2017-05-04T13:38:13.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "pr\u00e9traitement chimique ou biochimique (enzymes, microorganismes stabilis\u00e9s) des biod\u00e9chets dans le collecteur --> solubilisation de la mati\u00e8re organique pour un traitement facilit\u00e9 (fractionnement insolubles / liquide ?)",
+            "column_position": 3,
+            "id": 33,
+            "auteur_id": 22,
+            "datemodification": "2017-05-04T13:38:12.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "",
+            "column_position": 2,
+            "id": 32,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:38:06.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Comme les Italiens, taxer les biodechets qui restent dans les OMR.",
+            "column_position": 4,
+            "id": 31,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:38:04.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Pour les composteurs collectifs, mettre en place une plateforme de dialogue entre les usagers qui apportent les biodechets et les personnes r\u00e9f\u00e9rentes. Mettre aussi en relation les utilisateurs du compost su les espaces verts (gestionnaires)",
+            "column_position": 2,
+            "id": 30,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:37:56.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Applications smartphones",
+            "column_position": 0,
+            "id": 29,
+            "auteur_id": 3,
+            "datemodification": "2017-05-04T13:37:45.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "D\u00e9velopper la distribution des activateurs de composte, pour am\u00e9liorer le compostage malgr\u00e9 des apports irreguliers",
+            "column_position": 3,
+            "id": 28,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:37:37.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Gagner des bons de r\u00e9duction chez le vendeur des produits alimentaires ou obtenir une diminution de la redevance",
+            "column_position": 4,
+            "id": 27,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:37:11.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "R\u00e9utiliser la plus part de nos biodechets (une partie du moins) en le compostant \u00e0 l'aide de composteur individuel collectif et lombricompostage. Le marre de caf\u00e9, sachet de the, etc peut \u00eatre utilis\u00e9s dans le jardin ",
+            "column_position": 0,
+            "id": 26,
+            "auteur_id": 14,
+            "datemodification": "2017-05-04T13:37:07.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Jeu concours par immeuble/porte d immeuble ou par quartier\r\nGain de r\u00e9duc commer\u00e7ants de proximit\u00e9",
+            "column_position": 4,
+            "id": 25,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:36:55.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Cr\u00e9er des \u00e9v\u00e8nements autour du compostage local, p\u00e9dagogique, festif",
+            "column_position": 4,
+            "id": 24,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:36:45.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Appli de mise en relation de composteur \u00e0 proximit\u00e9",
+            "column_position": 2,
+            "id": 23,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:36:41.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Les \u00e9vacuer par l \u00e9vier\r\n",
+            "column_position": 0,
+            "id": 22,
+            "auteur_id": 16,
+            "datemodification": "2017-05-04T13:36:32.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Inciter par le d\u00e9veloppement de challenge (quartiers \u00e9cole,restau ..cage d escalier) avec communication des r\u00e9sultats et bonification",
+            "column_position": 4,
+            "id": 21,
+            "auteur_id": 6,
+            "datemodification": "2017-05-04T13:36:30.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Plateforme de mise en relation de particuliers\u200b producteurs\u200b de compost et de jardiniers, particuliers ou non, utilisateurs de compost",
+            "column_position": 2,
+            "id": 20,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:36:19.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Appli sociale avec score et \u00e9changes techniques sur pr\u00e9 traitement d\u00e9chets",
+            "column_position": 4,
+            "id": 19,
+            "auteur_id": 10,
+            "datemodification": "2017-05-04T13:35:47.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Mettre en relation des usagers proches pour initier des actions group\u00e9es de compostage de proximit\u00e9",
+            "column_position": 4,
+            "id": 18,
+            "auteur_id": 20,
+            "datemodification": "2017-05-04T13:35:42.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Action eco citoyenne de collecte en porte \u00e0 porte aupr\u00e8s des restaurateurs/gros producteurs de d\u00e9chets dans les centres urbains. ",
+            "column_position": 5,
+            "id": 17,
+            "auteur_id": 12,
+            "datemodification": "2017-05-04T13:35:35.000Z"
+        },
+        {
+            "row_position": 1,
+            "text": "Disposer de containers/poubelles connect\u00e9s selon le type de d\u00e9chets avec un syst\u00e8me low tech de mesure du remplissage avec alerte automatique du collecteur d\u00e8s que le niveau arrive \u00e0 un seuil d\u00e9fini",
+            "column_position": 1,
+            "id": 16,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:35:35.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Formation sur l'utilisation des composts, cr\u00e9ation de jardins partag\u00e9s. Dynamique d'agriculture urbaine.",
+            "column_position": 4,
+            "id": 15,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:35:30.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Appli pr jouer / suivre sa production d\u00e9tourn\u00e9e / gagner des r\u00e9duc dans commerces autour....",
+            "column_position": 1,
+            "id": 14,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:35:22.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Digesteur de quartier associ\u00e9 \u00e0 des jardins\r\n",
+            "column_position": 0,
+            "id": 13,
+            "auteur_id": 16,
+            "datemodification": "2017-05-04T13:35:10.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Un panier de l\u00e9gumes produits avec le compost de leurs biodechets par mois ",
+            "column_position": 4,
+            "id": 12,
+            "auteur_id": 19,
+            "datemodification": "2017-05-04T13:34:50.000Z"
+        },
+        {
+            "row_position": 3,
+            "text": "Mise en place de capteurs sur la qualit\u00e9 des d\u00e9chets apport\u00e9s dans les composteurs, syst\u00e8me de bons points pour les bons joueurs",
+            "column_position": 1,
+            "id": 11,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:34:43.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Poubelle connect\u00e9 qui bip quand on y d\u00e9pose de biodechets et rappelle que les biodechets doivent \u00eatre d\u00e9pos\u00e9s dans un composteur",
+            "column_position": 1,
+            "id": 10,
+            "auteur_id": 25,
+            "datemodification": "2017-05-04T13:34:10.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Localiser des conteneurs d'apport volontaire de collecte des biodechets et le niveau de remplissage",
+            "column_position": 1,
+            "id": 9,
+            "auteur_id": 20,
+            "datemodification": "2017-05-04T13:33:49.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Bon d'achat challenge familial r\u00e9duction taxe habitation",
+            "column_position": 4,
+            "id": 8,
+            "auteur_id": 23,
+            "datemodification": "2017-05-04T13:33:47.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Faire une campagne du m\u00eame style qu'au d\u00e9but du tri selectif, r\u00e9colte verre etc",
+            "column_position": 4,
+            "id": 7,
+            "auteur_id": 14,
+            "datemodification": "2017-05-04T13:33:30.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Instaurer une tarification incitative pour r\u00e9duire leur facture d\u00e9chets. Incitation \u00e9conomique",
+            "column_position": 4,
+            "id": 6,
+            "auteur_id": 5,
+            "datemodification": "2017-05-04T13:33:20.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Broyeur pour evier",
+            "column_position": 3,
+            "id": 5,
+            "auteur_id": 15,
+            "datemodification": "2017-05-04T13:33:16.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Broyage hygienisation des biodechets",
+            "column_position": 3,
+            "id": 4,
+            "auteur_id": 29,
+            "datemodification": "2017-05-04T13:32:55.000Z"
+        },
+        {
+            "row_position": 2,
+            "text": "Contrepartie \u20ac\u20ac",
+            "column_position": 4,
+            "id": 3,
+            "auteur_id": 8,
+            "datemodification": "2017-05-04T13:32:21.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Une bourse offre/demande pr mise en lien",
+            "column_position": 2,
+            "id": 2,
+            "auteur_id": 4,
+            "datemodification": "2017-05-04T13:32:17.000Z"
+        },
+        {
+            "row_position": 0,
+            "text": "Faire une plateforme collaborative pour partager ses biodechets avec un voisin poss\u00e9dant des poules par exemple",
+            "column_position": 4,
+            "id": 1,
+            "auteur_id": 17,
+            "datemodification": "2017-05-04T13:31:53.000Z"
+        }
+    ],
+    "success": true
+}
