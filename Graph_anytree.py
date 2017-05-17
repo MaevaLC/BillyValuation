@@ -34,9 +34,9 @@ for i in range(len(listeDependency)):
         print(listeDependency)
 
 
-for i in range(len(listeDependency)):
-    if listeDependency[i][2]
-    listeNode.append(Node(listeDependency[i][0],parent=listeNode[0]))
+#for i in range(len(listeDependency)):
+#    if listeDependency[i][2] :
+#        listeNode.append(Node(listeDependency[i][0],parent=listeNode[0]))
     
 
 
