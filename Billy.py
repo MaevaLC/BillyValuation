@@ -12,25 +12,22 @@ import json
 global tokenSeance
 global tokenMagic
 
-f = open("cred/tokenMagic.txt","r")
-tokenMagic = f.readline()
-
-def Seance():
+def Seance(url):
     global tokenMagic
-    seance = requests.get("http://ideavaluation.estia.fr/api/seance/list?token="+tokenMagic)
+    seance = requests.get("http://"+url+"/api/seance/list?token="+tokenMagic)
     listeSeanceJ = seance.json() #type = list of dict
     print (listeSeanceJ)
 
-def RequestToken(idSeance):
+def RequestToken(url, idSeance):
     global tokenSeance
     global tokenMagic
-    r = requests.get("http://ideavaluation.estia.fr/api/seance/"+str(idSeance)+"/token?token="+tokenMagic)
+    r = requests.get("http://"+url+"/api/seance/"+str(idSeance)+"/token?token="+tokenMagic)
     tokenSeance = r.text #type = str
     return tokenSeance
     
-def GetData():
+def GetData(url):
     message=[]
-    data_json = requests.get("http://ideavaluation.estia.fr/api/message/all?token="+tokenSeance).json()
+    data_json = requests.get("http://"+url+"/api/message/all?token="+tokenSeance).json()
     
     with open('data_messages.json', 'w') as f:
         f.write(json.dumps(data_json, indent=4))    
@@ -39,20 +36,24 @@ def GetData():
     for i in range(len(data_json['result'])) :  #data_json['result'] est une list de dict
         dictionnaire = data_json['result'][i]   #on recup le ieme dict de la list
         message.append(dictionnaire['text'])    #on recup le texte du dict
-    pprint (message)
+    pprint(message)
     return message
 
 def DecodeJson():
     print ('')
 
 
+f = open("cred/tokenMagic.txt","r")         #recuperation du token Magic
+tokenMagic = f.readline()
+f.close()
 
-#Seance()                           #Connaitre les sceances
-RequestToken(2)                    #Preciser la sceance pour obtenir le jeton approprié
-GetData()                          #Recuperer les messages
+Seance("ideavaluation.estia.fr")            #Connaitre les sceances
+RequestToken("ideavaluation.estia.fr", 2)   #Preciser la sceance pour obtenir le jeton approprié
+GetData("ideavaluation.estia.fr")           #Recuperer les messages
 #convertir
 #traiter
 #reconvertir
 #envoyer
+
 
 # a ajouter : url en argument

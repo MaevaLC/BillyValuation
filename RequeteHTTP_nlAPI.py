@@ -7,34 +7,41 @@ Created on Wed May 10 11:59:58 2017
 
 import requests   
 import json
-from pprint import pprint
+import hashlib
 
-#requete du jeton google
-f = open("cred/tokenMagic.txt","r")
-tokenMagic = f.readline()
-reqJeton = requests.get("http://neptune2.estia.fr/api/googleToken?token="+tokenMagic)
-tokenSeance = reqJeton.json() #type = dict
-tokenGoogle=tokenSeance['token']['access_token']
+#function to hash the phrase to name the file
+def hash (phraseToHash) :
+    hash_object = hashlib.md5((phraseToHash).encode())
+    return(hash_object.hexdigest())
 
-#requete pour annotate
-r = requests.post("https://language.googleapis.com/v1beta2/documents:annotateText",
-                  json = {"document":{
-                              "type":"PLAIN_TEXT",
-                              "content":"Le chat est grand."
+#request for a Google Token via IdeaValuation's server
+def requestGoogleToken(url) :
+    f = open("cred/tokenMagic.txt","r")
+    tokenMagic = f.readline()
+    reqJeton = requests.get("http://"+url+"/api/googleToken?token="+tokenMagic)
+    tokenSeance = reqJeton.json() #type = dict
+    tokenGoogle=tokenSeance['token']['access_token']
+    return tokenGoogle
+
+#create an json with the annotated file in it
+def annotateText(message,url) :
+    r = requests.post("https://language.googleapis.com/v1beta2/documents:annotateText",
+                      json = {"document":{
+                                  "type":"PLAIN_TEXT",
+                                  "content": message
+                                  },
+                              "features":{
+                                  "extractSyntax": True,
+                                  "extractEntities": True,
+                                  "extractDocumentSentiment": True
+                                  },
+                              "encodingType": "UTF8",
                               },
-                          "features":{
-                              "extractSyntax": True,
-                              "extractEntities": True,
-                              "extractDocumentSentiment": True
-                              },
-                          "encodingType": "UTF8",
-                          },
-                  headers = {"authorization": "Bearer "+ tokenGoogle}
-                  ).json()
-                  
-
-#sauvegarde du json
-with open('annotatedText.json', 'w') as f:
-    f.write(json.dumps(r, indent=4))
-pprint(r)
-    
+                      headers = {"authorization": "Bearer "+ requestGoogleToken(url)}
+                      ).json()
+    #json named after the message name
+    with open("annotatedText/"+hash(r["sentences"][0]["text"]["content"])+".json", 'w') as f:
+        f.write(json.dumps(r, indent=4))
+ 
+#call of the function   
+annotateText("Bonus financier ou bons d'achats pour les bons élèves si apport en déchèterie par exemple.", "ideavaluation.estia.fr")  #or neptune2
