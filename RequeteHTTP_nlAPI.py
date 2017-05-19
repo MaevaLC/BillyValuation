@@ -5,17 +5,24 @@ Created on Wed May 10 11:59:58 2017
 @author: m.leclech
 """
 
-import requests   
-import json
-import hashlib
 
-#function to hash the phrase to name the file
-def hash (phraseToHash) :
-    hash_object = hashlib.md5((phraseToHash).encode())
+import hashlib
+import json
+import os
+import requests  
+
+
+def hashSentence(sentenceToHash):
+    """Take a string, return a string hashed (md5)"""    
+    
+    hash_object = hashlib.md5((sentenceToHash).encode())
     return(hash_object.hexdigest())
 
-#request for a Google Token via IdeaValuation's server
-def requestGoogleToken(url) :
+
+def requestGoogleToken(url):
+    """Request a token to use with Google API Auth 
+    The url arg is the server, idevaluation.estia.fr or neptune2.estia.fr"""    
+    
     f = open("cred/tokenMagic.txt","r")
     tokenMagic = f.readline()
     reqJeton = requests.get("http://"+url+"/api/googleToken?token="+tokenMagic)
@@ -23,25 +30,33 @@ def requestGoogleToken(url) :
     tokenGoogle=tokenSeance['token']['access_token']
     return tokenGoogle
 
-#create an json with the annotated file in it
-def annotateText(message,url) :
-    r = requests.post("https://language.googleapis.com/v1beta2/documents:annotateText",
-                      json = {"document":{
-                                  "type":"PLAIN_TEXT",
-                                  "content": message
+
+def annotateText(url, seance, message):
+    """Take the url of the server as a string (idevaluation.estia.fr, neptune2.estia.fr), 
+    an int seance which is the id of the sceance where the message come from, 
+    and the message as a string which need to be annotated
+    and in return create a json file with the data in annotatedText/:url/:seance"""    
+    
+    #create dirs if not existing yet
+    if os.path.exists("annotatedText/"+url+"/"+str(seance)) == False:
+        os.makedirs("annotatedText/"+url+"/"+str(seance)) 
+    #check that the sentence isn't already annotated
+    if os.path.isfile("annotatedText/"+url+"/"+str(seance)+"/"+hashSentence(message)+".json") == False :
+        #request to annotate
+        r = requests.post("https://language.googleapis.com/v1beta2/documents:annotateText",
+                          json = {"document":{
+                                      "type":"PLAIN_TEXT",
+                                      "content": message
+                                      },
+                                  "features":{
+                                      "extractSyntax": True,
+                                      "extractEntities": True,
+                                      "extractDocumentSentiment": True
+                                      },
+                                  "encodingType": "UTF8",
                                   },
-                              "features":{
-                                  "extractSyntax": True,
-                                  "extractEntities": True,
-                                  "extractDocumentSentiment": True
-                                  },
-                              "encodingType": "UTF8",
-                              },
-                      headers = {"authorization": "Bearer "+ requestGoogleToken(url)}
-                      ).json()
-    #json named after the message name
-    with open("annotatedText/"+hash(r["sentences"][0]["text"]["content"])+".json", 'w') as f:
-        f.write(json.dumps(r, indent=4))
- 
-#call of the function   
-annotateText("Bonus financier ou bons d'achats pour les bons élèves si apport en déchèterie par exemple.", "ideavaluation.estia.fr")  #or neptune2
+                          headers = {"authorization": "Bearer "+ requestGoogleToken(url)}
+                          ).json()
+        #json named after the message content
+        with open("annotatedText/"+url+"/"+str(seance)+"/"+hashSentence(message)+".json", 'w') as f:
+            f.write(json.dumps(r, indent=4))
