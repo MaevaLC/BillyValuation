@@ -62,14 +62,14 @@ def annotateData(url, seance, listMessage):
         annotateText("neptune2.estia.fr", 2, message)
     
 
-#WILL NEED TO MAKE A MAIN HERE TO MAKE IT EASIER
-f = open("cred/tokenMagic.txt","r")  #recuperation du token Magic
-tokenMagic = f.readline()
-f.close()
-
-#Seance("ideavaluation.estia.fr")  #Connaitre les sceances
-requestToken("neptune2.estia.fr", 2)  #Preciser la sceance pour obtenir le jeton approprié
-listeMessage = getData("neptune2.estia.fr")  #Recuperer les messages
-annotateData("neptune2.estia.fr", 2, listeMessage)  #Les annote via Google NL API
+if __name__ == '__main__':    
+    f = open("cred/tokenMagic.txt","r")  #recuperation du token Magic
+    tokenMagic = f.readline()
+    f.close()
+    
+    #Seance("ideavaluation.estia.fr")  #Connaitre les sceances
+    #requestToken("neptune2.estia.fr", 2)  #Preciser la sceance pour obtenir le jeton approprié
+    #listeMessage = getData("neptune2.estia.fr")  #Recuperer les messages
+    #annotateData("neptune2.estia.fr", 2, listeMessage)  #Les annote via Google NL API
 
 

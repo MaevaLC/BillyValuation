@@ -6,7 +6,6 @@ Created on Thu May 18 09:43:13 2017
 """
 
 
-#import
 import json
 import os
 import requests
@@ -23,23 +22,28 @@ def listTypeWord(url, seance, typeWord):
     for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
         if element.endswith('.json'):
             fichiers.append(element)   #the list is filled with the name of every json in the directory
-    
+    listWords = []
     for fichier in fichiers:  #load each json file
         with open("annotatedText/"+url+"/"+str(seance)+"/"+fichier, 'r') as f:
             annotatedText = json.load(f)            
             for i in range(len(annotatedText["tokens"])):    #for every word
                 annotatedWord= annotatedText["tokens"][i]
                 if annotatedWord["partOfSpeech"]["tag"] == typeWord:  #return it if it's the type searched
-                    print(annotatedWord["lemma"])
+                    listWords.append(annotatedWord["lemma"])
+    return listWords
    
                  
-def typeNextWord(url, seance, jsonFile, beginOffSetWord):
+def typeNextWord(url, seance, jsonFile, indexWord):
     """ Find the type of the word next after the word you specify """
-    
-    # 
-    # WiP : trouver l'indice en fonction de l'offset (ou bien mettre l'indice directement en arg ?)
-    #passer à l'indice d'aprs et analyser son type
-    #
+
+    with open("annotatedText/"+url+"/"+str(seance)+"/"+jsonFile, 'r') as f:
+        annotatedText = json.load(f) 
+        if len(annotatedText["tokens"]) <= indexWord :
+            return "None"
+        else :
+            nextWord = annotatedText["tokens"][indexWord+1]
+            typeNextWord = nextWord["partOfSpeech"]["tag"]
+            return typeNextWord
 
 
 def listLexicon(url, seance):
@@ -89,8 +93,8 @@ def addWord(url, seance, lexiconId, lemme, text, pos):
 
 
 #function call        
-#print("liste adjectif")     
-#listTypeWord("neptune2.estia.fr",2,"ADJ") 
+print("liste adjectif")     
+print(listTypeWord("neptune2.estia.fr",2,"ADJ"))
 
 #listLexicon("neptune2.estia.fr", 2)
 #create("neptune2.estia.fr", 2, "plop", "C'est chouette les descriptions")
