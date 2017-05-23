@@ -15,6 +15,7 @@ height = 600
 nodeWidth = 45
 nodeHeight = 60   
 
+
 class Word:
     """Class to define a word, by its lemme, position, parent, children"""
     
@@ -41,7 +42,7 @@ def createListWords(pathFile):
     with open(pathFile, "r") as f:
         annotatedText = json.load(f)
         for i in range(len(annotatedText["tokens"])):
-            annotatedWord= annotatedText["tokens"][i]
+            annotatedWord = annotatedText["tokens"][i]
             dependency = (annotatedWord["dependencyEdge"]["headTokenIndex"])
             text = (annotatedWord["text"]["content"])
             listWords.append(Word(text, i, dependency))
@@ -78,7 +79,7 @@ def getParentsCount(listWords, wordIndex):
 
     count = 0
     word = listWords[wordIndex]
-    while (word.position != word.parent):
+    while word.position != word.parent:
         count += 1        
         word = listWords[word.parent]
     return count
@@ -88,9 +89,9 @@ def setupRoot(board, x, y, listWords):
     """Draw the root and add it to the listWordOnBoard
     
     Args:
-        the board which will be use to draw on (board, from graphics)
-        x : the x offset of the anchor for the root (int)
-        y : the y offset of the anchor for the root (int)
+        board: the board which will be use to draw on (board, from graphics)
+        x: the x offset of the anchor for the root (int)
+        y: the y offset of the anchor for the root (int)
         listWords : the list of Words to be printed (list of Word objects)
     Returns: 
         the list of the words on the board (list of Word objects)
@@ -100,6 +101,7 @@ def setupRoot(board, x, y, listWords):
     listWordOnBoard = []
     root = listWords[getRootIndex(listWords)]
     rootDrawing = Text(Point(x,y),root.lemme)
+    rootDrawing.setSize(10)
     rootDrawing.draw(board)
     board.getMouse()  #can get annotated, it just to make a pause
     listWordOnBoard.append(root)
@@ -110,9 +112,9 @@ def setupRestOfWords(board, rootX, rootY, listWordOnBoard, listWords):
     """While every word in not in place on the board, continue to place them
     
     Args:
-        board : the board which will be use to draw on (board, from graphics)
-        rootX : the x offset of the anchor for the root (int)
-        rootY : the y offset of the anchor for the root (int)
+        board: the board which will be use to draw on (board, from graphics)
+        rootX: the x offset of the anchor for the root (int)
+        rootY: the y offset of the anchor for the root (int)
         listWordOnBoard : the list of the words on the board (list of Word objects)
         listWords : the list of Words to be printed (list of Word objects)
     Returns: 
@@ -120,9 +122,9 @@ def setupRestOfWords(board, rootX, rootY, listWordOnBoard, listWords):
         
     """
 
-    wordOnBoardCheckedCount = 0        
-    while len(listWordOnBoard)<len(listWords):
-        word = listWordOnBoard[wordOnBoardCheckedCount]
+    lastWordPlacedIndex = 0        
+    while len(listWordOnBoard) < len(listWords):
+        word = listWordOnBoard[lastWordPlacedIndex]
         for childIndex in word.children:
             #since the root refer to itself as his own child
             #check to not make it duplicate to infinite
@@ -131,10 +133,12 @@ def setupRestOfWords(board, rootX, rootY, listWordOnBoard, listWords):
                 anchorX = rootX + nodeWidth*childIndex
                 anchorY = rootY + nodeHeight*getParentsCount(listWords, childIndex)
                 anchor =  Point(anchorX, anchorY)
-                Text(anchor, childWord.lemme).draw(board) #print the word on the board
+                message = Text(anchor, childWord.lemme) 
+                message.setSize(10)
+                message.draw(board)  #print the word on the board
                 listWordOnBoard.append(childWord) #add the word to the listWordOnBoard
                 board.getMouse()  #can get annotated, it just to make a pause    
-        wordOnBoardCheckedCount += 1
+        lastWordPlacedIndex += 1
     board.getMouse()  # pause, wait for a click on the window
 
 
@@ -155,8 +159,8 @@ def drawTree(pathFile):
     board = GraphWin("Billy's Tree Board", boardLength, boardHeight)
     #def of my anchor for the first point
     offset = (getRootIndex(listWords)/len(listWords))
-    rootPositionX = offset * boardLength + 100
-    rootPositionY = offset * boardHeight + 100
+    rootPositionX = offset * boardLength + 75
+    rootPositionY = offset * boardHeight + 75
     #place the words on the board
     listWordOnBoard = setupRoot(board, rootPositionX, rootPositionY, listWords)
     setupRestOfWords(board, rootPositionX, rootPositionY, listWordOnBoard, listWords)
@@ -164,6 +168,3 @@ def drawTree(pathFile):
     board.getMouse() 
     board.close()
    
- 
-#test  
-#drawTree('annotatedText.json')
