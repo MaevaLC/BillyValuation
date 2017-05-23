@@ -12,74 +12,146 @@ import requests
 
 from Billy import requestToken
 from pprint import pprint
-
-
-def listTypeWord(url, seance, typeWord):
-    """Function to list the word with a certain TAG such a as ADJ, ADP, NOUN, VERB 
-    url of the server (string), id of the seance (int), type of Word (string)"""    
-    
-    fichiers = []    #list of annotated data
-    for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
-        if element.endswith('.json'):
-            fichiers.append(element)   #the list is filled with the name of every json in the directory
-    listWords = []
-    for fichier in fichiers:  #load each json file
-        with open("annotatedText/"+url+"/"+str(seance)+"/"+fichier, 'r') as f:
-            annotatedText = json.load(f)            
-            for i in range(len(annotatedText["tokens"])):    #for every word
-                annotatedWord= annotatedText["tokens"][i]
-                if annotatedWord["partOfSpeech"]["tag"] == typeWord:  #return it if it's the type searched
-                    listWords.append(annotatedWord["lemma"])
-    return listWords
    
                  
-def typeNextWord(url, seance, jsonFile, indexWord):
-    """ Find the type of the word next after the word you specify """
+def wordTag(url, seance, jsonFile, wordIndex):
+    """Returns the tag of the word you specify 
+
+    Args:
+        url (string): the url of the server the jsonFile come from
+        seance (int): the id of the seance the jsonFile come from
+        jsonFile (string): the name of the json file (including the .json)
+        wordIndex: the position of the word in the sentence
+    Returns:
+        a string, which is the tag attribute of the word
+    
+    """
 
     with open("annotatedText/"+url+"/"+str(seance)+"/"+jsonFile, 'r') as f:
         annotatedText = json.load(f) 
-        if len(annotatedText["tokens"]) <= indexWord :
-            return "None"
-        else :
-            nextWord = annotatedText["tokens"][indexWord+1]
-            typeNextWord = nextWord["partOfSpeech"]["tag"]
-            return typeNextWord
+        if wordIndex >= len(annotatedText["tokens"]):
+            raise ValueError("There isn't that many word in the sentence")
+        word = annotatedText["tokens"][wordIndex]
+        wordTag = word["partOfSpeech"]["tag"]
+        return wordTag
 
 
+def wordLabel(url, seance, jsonFile, wordIndex):
+    """Returns the label of the word you specify 
+
+    Args:
+        url (string): the url of the server the jsonFile come from
+        seance (int): the id of the seance the jsonFile come from
+        jsonFile (string): the name of the json file (including the .json)
+        wordIndex: the position of the word in the sentence
+    Returns:
+        a string, which is the label attribute of the word
+    
+    """
+
+    with open("annotatedText/"+url+"/"+str(seance)+"/"+jsonFile, 'r') as f:
+        annotatedText = json.load(f) 
+        if wordIndex >= len(annotatedText["tokens"]):
+            raise ValueError("There isn't that many word in the sentence")
+        word = annotatedText["tokens"][wordIndex]
+        wordTag = word["dependencyEdge"]["label"]
+        return wordTag
+
+
+def listWords(url, seance, wordTag):
+    """Function to list the word with a certain TAG such a as ADJ, ADP, NOUN, VERB 
+    url of the server (string), id of the seance (int), type of Word (string)
+    
+    refaire docstring, utiliser la fonction wordTag    
+    """    
+    
+    files = [] #list of annotated data files
+    for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
+        if element.endswith('.json'):
+            files.append(element)  #filled with the name of every json in the directory
+    listWords = []  #the list with the words
+    for file in files:  #load each json file
+        with open("annotatedText/"+url+"/"+str(seance)+"/"+file, 'r') as f:
+            annotatedText = json.load(f)            
+            for i in range(len(annotatedText["tokens"])):    #for every word
+                annotatedWord= annotatedText["tokens"][i]
+                if annotatedWord["partOfSpeech"]["tag"] == wordTag:  #return it if it's the type searched
+                    listWords.append(annotatedWord["lemma"])
+    return listWords
+    
+    
 def listLexicon(url, seance):
-    """Return the list of the lexicon for the seance (int) on the server (string)"""
+    """Return the list of lexicons existing
+    
+    Args:
+        url (string): the url of the server
+        seance (int): the id of the seance
+    Returns:
+        a dict {success: boolean, lexiques: []}
+    
+    """
     
     tokenSeance = requestToken(url, seance)
-    request = requests.get("http://"+url+"/api/lexique/list?token="+tokenSeance).json()  
-    pprint(request)
+    request = requests.get("http://"+url
+                            +"/api/lexique/list?token="+tokenSeance).json()  
+    return request
 
 
-def create(url, seance, name, description=""):
-    """Create a new lexicon for this seance (int) on the server (string),
-    name and description are string"""
+def createLexicon(url, seance, name, description=""):
+    """Create a new lexicon
+    
+    Args:
+        url (string): the url of the server the lexicon will relate to
+        seance (int): the id of the seance the lexicon will relate to
+        name (string): the name of the new lexicon
+        [description] (string): a global idea of the theme of the lexicon
+    Returns:
+        a dict {success: boolean, *****A COMPLETER*****}
+    
+    """
     
     tokenSeance = requestToken(url, seance)
     request = requests.post("http://"+url+"/api/lexique/create",
                       json = {"token": tokenSeance,
                               "name": name,
                               "description": description,
-                              })
-    r = request.json()
-    pprint(r)
+                              }).json()
+    return request
 
 
-def listeWord(url, seance, lexiconName):
-    """Return a list with all the word in the lexicon (identified by its name, string),
-    for the seance (int) on the server (string)"""
+def listWordsLexicon(url, seance, lexiconName):
+    """Return the list with all the words of a lexicon
+    
+    Args:
+        url (string): the url of the server the lexicon relate to
+        seance (int): the id of the seance the lexicon relate to
+        lexiconName (string): the name of the lexicon
+    Returns:
+        a dict {success: boolean, tokens: []}
+        
+    """
 
     tokenSeance = requestToken(url, seance)
-    request = requests.get("http://"+url+"/api/lexique/"+lexiconName+"/all?token="+tokenSeance).json()  
-    pprint(request)
+    request = requests.get("http://"+url
+                            +"/api/lexique/"+lexiconName
+                            +"/all?token="+tokenSeance).json()  
+    return request
     
  
-def addWord(url, seance, lexiconId, lemme, text, pos):
-    """Add a word to the lexicon (id, int) for this seance (int) on the server (string),
-    Word is define by the word, its lemme and its pos (all string)"""
+def addWordToLexicon(url, seance, lexiconId, lemme, text, pos):
+    """Add a word to the lexicon
+    
+    Args:
+        url (string): the url of the server the word relate to
+        seance (int): the id of the seance the word relate to
+        lexiconId (int): the id of the lexicon in which the word will be added
+        lemme (string): the lemme of the word
+        text (string): the word itself
+        pos (string): "part of speech" of the word
+    Returns:
+        a dict {success: boolean, *****A COMPLETER*****}
+    
+    """
     
     tokenSeance = requestToken(url, seance)
     request = requests.post("http://"+url+"/api/lexique/"+str(lexiconId)+"/add",
@@ -87,16 +159,16 @@ def addWord(url, seance, lexiconId, lemme, text, pos):
                               "lemme": lemme,
                               "text": text,
                               "partOfSpeech": pos,
-                              })
-    r = request.json()
-    pprint(r)    
-
+                              }).json()
+    return request
+ 
 
 #function call        
-print("liste adjectif")     
-print(listTypeWord("neptune2.estia.fr",2,"ADJ"))
+#print("liste adjectif")     
+#print(listTypeWord("neptune2.estia.fr",2,"ADJ"))
+print(wordTag("neptune2.estia.fr", 2, "6e5b7aa8dc9c1dc011fcb0c83d5141a5.json", 7))
 
-#listLexicon("neptune2.estia.fr", 2)
-#create("neptune2.estia.fr", 2, "plop", "C'est chouette les descriptions")
-#listeWord("neptune2.estia.fr", 2, "toto")
-#addWord("neptune2.estia.fr", 2, 1, "ta", "tatata", "pobj")
+#pprint(listLexicon("neptune2.estia.fr", 2))
+#pprint(createLexicon("neptune2.estia.fr", 2, "plop"))
+#pprint(listWordsLexicon("neptune2.estia.fr", 2, "toto"))
+#pprint(addWordToLexicon("neptune2.estia.fr", 2, 1, "ta", "tatata", "pobj"))
