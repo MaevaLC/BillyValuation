@@ -10,7 +10,7 @@ import json
 import os
 import requests
 
-from Billy import requestToken
+from Billy import requestSeanceToken
 from pprint import pprint
    
                  
@@ -59,24 +59,28 @@ def wordLabel(url, seance, jsonFile, wordIndex):
 
 
 def listWords(url, seance, wordTag):
-    """Function to list the word with a certain TAG such a as ADJ, ADP, NOUN, VERB 
-    url of the server (string), id of the seance (int), type of Word (string)
+    """Function to list all words with a certain TAG in a seance
     
-    refaire docstring, utiliser la fonction wordTag    
+    Args:
+        url (string): the url of the server the jsonFile come from
+        seance (int): the id of the seance the jsonFile come from
+        wordTag (string): ADJ, ADP, ADV, CONJ, DET, NOUN, NUM, PRON, PRT, PUNCT, VERB
+    Returns:
+        the list of words corresponding (list of dict)
+    
     """    
     
-    files = [] #list of annotated data files
+    files = []
     for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
         if element.endswith('.json'):
-            files.append(element)  #filled with the name of every json in the directory
-    listWords = []  #the list with the words
-    for file in files:  #load each json file
+            files.append(element)
+    listWords = []
+    for file in files:
         with open("annotatedText/"+url+"/"+str(seance)+"/"+file, 'r') as f:
             annotatedText = json.load(f)            
-            for i in range(len(annotatedText["tokens"])):    #for every word
-                annotatedWord= annotatedText["tokens"][i]
-                if annotatedWord["partOfSpeech"]["tag"] == wordTag:  #return it if it's the type searched
-                    listWords.append(annotatedWord["lemma"])
+            for word in annotatedText["tokens"]:
+                if word["partOfSpeech"]["tag"] == wordTag:
+                    listWords.append(word)
     return listWords
     
     
@@ -91,7 +95,7 @@ def listLexicon(url, seance):
     
     """
     
-    tokenSeance = requestToken(url, seance)
+    tokenSeance = requestSeanceToken(url, seance)
     request = requests.get("http://"+url
                             +"/api/lexique/list?token="+tokenSeance).json()  
     return request
@@ -110,7 +114,7 @@ def createLexicon(url, seance, name, description=""):
     
     """
     
-    tokenSeance = requestToken(url, seance)
+    tokenSeance = requestSeanceToken(url, seance)
     request = requests.post("http://"+url+"/api/lexique/create",
                       json = {"token": tokenSeance,
                               "name": name,
@@ -131,7 +135,7 @@ def listWordsLexicon(url, seance, lexiconName):
         
     """
 
-    tokenSeance = requestToken(url, seance)
+    tokenSeance = requestSeanceToken(url, seance)
     request = requests.get("http://"+url
                             +"/api/lexique/"+lexiconName
                             +"/all?token="+tokenSeance).json()  
@@ -153,7 +157,7 @@ def addWordToLexicon(url, seance, lexiconId, lemme, text, pos):
     
     """
     
-    tokenSeance = requestToken(url, seance)
+    tokenSeance = requestSeanceToken(url, seance)
     request = requests.post("http://"+url+"/api/lexique/"+str(lexiconId)+"/add",
                       json = {"token": tokenSeance,
                               "lemme": lemme,
@@ -166,9 +170,9 @@ def addWordToLexicon(url, seance, lexiconId, lemme, text, pos):
 #function call        
 #print("liste adjectif")     
 #print(listTypeWord("neptune2.estia.fr",2,"ADJ"))
-print(wordTag("neptune2.estia.fr", 2, "6e5b7aa8dc9c1dc011fcb0c83d5141a5.json", 7))
+#print(wordTag("neptune2.estia.fr", 2, "6e5b7aa8dc9c1dc011fcb0c83d5141a5.json", 7))
 
-#pprint(listLexicon("neptune2.estia.fr", 2))
+pprint(listLexicon("neptune2.estia.fr", 2))
 #pprint(createLexicon("neptune2.estia.fr", 2, "plop"))
 #pprint(listWordsLexicon("neptune2.estia.fr", 2, "toto"))
 #pprint(addWordToLexicon("neptune2.estia.fr", 2, 1, "ta", "tatata", "pobj"))

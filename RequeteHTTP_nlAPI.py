@@ -11,39 +11,56 @@ import json
 import os
 import requests  
 
+from Billy import getMagicToken
 
-def hashSentence(sentenceToHash):
-    """Take a string, return a string hashed (md5)"""    
+
+def hashSentence(stringToHash):
+    """Return a string hashed (md5)"""    
     
-    hash_object = hashlib.md5((sentenceToHash).encode())
-    return(hash_object.hexdigest())
+    hashString = hashlib.md5((stringToHash).encode()).hexdigest()
+    return hashString
 
 
 def requestGoogleToken(url):
-    """Request a token to use with Google API Auth 
-    The url arg is the server, idevaluation.estia.fr or neptune2.estia.fr"""    
+    """Request a token to use with Google API Auth
     
-    f = open("cred/tokenMagic.txt","r")
-    tokenMagic = f.readline()
-    reqJeton = requests.get("http://"+url+"/api/googleToken?token="+tokenMagic)
-    tokenSeance = reqJeton.json() #type = dict
-    tokenGoogle=tokenSeance['token']['access_token']
-    return tokenGoogle
+    Args:
+        url (string): the server you'll ask from
+                      idevaluation.estia.fr or neptune2.estia.fr
+    Returns:
+        a token to use Natural Language API
+                      
+    """    
+    
+    magicToken = getMagicToken()
+    tokenRequest = requests.get("http://"+url+"/api/googleToken?token="
+                                         +magicToken).json()
+    googleToken = tokenRequest['token']['access_token']
+    return googleToken
 
 
 def annotateText(url, seance, message):
-    """Take the url of the server as a string (idevaluation.estia.fr, neptune2.estia.fr), 
-    an int seance which is the id of the sceance where the message come from, 
-    and the message as a string which need to be annotated
-    and in return create a json file with the data in annotatedText/:url/:seance"""    
+    """Annotate a message
     
+    Args:
+        url (string): the server the message come from
+        seance (string): the seance the message come from
+        message (string): the sentence you want to annotate
+    Returns:
+        None
+        Create json files with the data in ./annotatedText/:url/:seance
+    
+    """    
+    
+    path = "annotatedText/"+url+"/"+str(seance)
     #create dirs if not existing yet
-    if os.path.exists("annotatedText/"+url+"/"+str(seance)) == False:
-        os.makedirs("annotatedText/"+url+"/"+str(seance)) 
+    if os.path.exists(path) == False:
+        os.makedirs(path) 
     #check that the sentence isn't already annotated
-    if os.path.isfile("annotatedText/"+url+"/"+str(seance)+"/"+hashSentence(message)+".json") == False :
+    if os.path.isfile(path+"/"+hashSentence(message)+".json") == False :
         #request to annotate
-        r = requests.post("https://language.googleapis.com/v1beta2/documents:annotateText",
+        r = requests.post("https://language.googleapis.com"
+                         +"/v1beta2/documents:annotateText",
                           json = {"document":{
                                       "type":"PLAIN_TEXT",
                                       "content": message
@@ -55,8 +72,9 @@ def annotateText(url, seance, message):
                                       },
                                   "encodingType": "UTF8",
                                   },
-                          headers = {"authorization": "Bearer "+ requestGoogleToken(url)}
+                          headers = {"authorization": "Bearer"
+                                     + requestGoogleToken(url)}
                           ).json()
         #json named after the message content
-        with open("annotatedText/"+url+"/"+str(seance)+"/"+hashSentence(message)+".json", 'w') as f:
+        with open(path+"/"+hashSentence(message)+".json", 'w') as f:
             f.write(json.dumps(r, indent=4))
