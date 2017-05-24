@@ -11,7 +11,7 @@ import json
 import os
 import requests  
 
-from Billy import getMagicToken
+from Token import requestGoogleToken
 
 
 def hashSentence(stringToHash):
@@ -19,24 +19,6 @@ def hashSentence(stringToHash):
     
     hashString = hashlib.md5((stringToHash).encode()).hexdigest()
     return hashString
-
-
-def requestGoogleToken(url):
-    """Request a token to use with Google API Auth
-    
-    Args:
-        url (string): the server you'll ask from
-                      idevaluation.estia.fr or neptune2.estia.fr
-    Returns:
-        a token to use Natural Language API
-                      
-    """    
-    
-    magicToken = getMagicToken()
-    tokenRequest = requests.get("http://"+url+"/api/googleToken?token="
-                                         +magicToken).json()
-    googleToken = tokenRequest['token']['access_token']
-    return googleToken
 
 
 def annotateText(url, seance, message):

@@ -10,61 +10,42 @@ import json
 import os
 import requests
 
-from Billy import requestSeanceToken
-from pprint import pprint
-   
-                 
-def wordTag(url, seance, jsonFile, wordIndex):
-    """Returns the tag of the word you specify 
+from Token import requestSeanceToken
 
+
+def listLabelWords(url, seance, wordLabel):
+    """Function to list all words with a certain LABEL in a seance
+    
     Args:
         url (string): the url of the server the jsonFile come from
         seance (int): the id of the seance the jsonFile come from
-        jsonFile (string): the name of the json file (including the .json)
-        wordIndex: the position of the word in the sentence
+        wordLabel (string): https://goo.gl/5htKX0
     Returns:
-        a string, which is the tag attribute of the word
+        the list of words corresponding (list of dict)
     
-    """
-
-    with open("annotatedText/"+url+"/"+str(seance)+"/"+jsonFile, 'r') as f:
-        annotatedText = json.load(f) 
-        if wordIndex >= len(annotatedText["tokens"]):
-            raise ValueError("There isn't that many word in the sentence")
-        word = annotatedText["tokens"][wordIndex]
-        wordTag = word["partOfSpeech"]["tag"]
-        return wordTag
-
-
-def wordLabel(url, seance, jsonFile, wordIndex):
-    """Returns the label of the word you specify 
-
-    Args:
-        url (string): the url of the server the jsonFile come from
-        seance (int): the id of the seance the jsonFile come from
-        jsonFile (string): the name of the json file (including the .json)
-        wordIndex: the position of the word in the sentence
-    Returns:
-        a string, which is the label attribute of the word
+    """    
     
-    """
+    files = []
+    for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
+        if element.endswith('.json'):
+            files.append(element)
+    listWords = []
+    for file in files:
+        with open("annotatedText/"+url+"/"+str(seance)+"/"+file, 'r') as f:
+            annotatedText = json.load(f)            
+            for word in annotatedText["tokens"]:
+                if word["dependencyEdge"]["label"] == wordLabel:
+                    listWords.append(word)
+    return listWords
 
-    with open("annotatedText/"+url+"/"+str(seance)+"/"+jsonFile, 'r') as f:
-        annotatedText = json.load(f) 
-        if wordIndex >= len(annotatedText["tokens"]):
-            raise ValueError("There isn't that many word in the sentence")
-        word = annotatedText["tokens"][wordIndex]
-        wordTag = word["dependencyEdge"]["label"]
-        return wordTag
 
-
-def listWords(url, seance, wordTag):
+def listTagWords(url, seance, wordTag):
     """Function to list all words with a certain TAG in a seance
     
     Args:
         url (string): the url of the server the jsonFile come from
         seance (int): the id of the seance the jsonFile come from
-        wordTag (string): ADJ, ADP, ADV, CONJ, DET, NOUN, NUM, PRON, PRT, PUNCT, VERB
+        wordTag (string): https://goo.gl/yX4gPH
     Returns:
         the list of words corresponding (list of dict)
     
@@ -110,7 +91,7 @@ def createLexicon(url, seance, name, description=""):
         name (string): the name of the new lexicon
         [description] (string): a global idea of the theme of the lexicon
     Returns:
-        a dict {success: boolean, *****A COMPLETER*****}
+        a dict {success: boolean}
     
     """
     
@@ -153,7 +134,7 @@ def addWordToLexicon(url, seance, lexiconId, lemme, text, pos):
         text (string): the word itself
         pos (string): "part of speech" of the word
     Returns:
-        a dict {success: boolean, *****A COMPLETER*****}
+        a dict {success: boolean, tokenId: int}
     
     """
     
@@ -165,14 +146,3 @@ def addWordToLexicon(url, seance, lexiconId, lemme, text, pos):
                               "partOfSpeech": pos,
                               }).json()
     return request
- 
-
-#function call        
-#print("liste adjectif")     
-#print(listTypeWord("neptune2.estia.fr",2,"ADJ"))
-#print(wordTag("neptune2.estia.fr", 2, "6e5b7aa8dc9c1dc011fcb0c83d5141a5.json", 7))
-
-pprint(listLexicon("neptune2.estia.fr", 2))
-#pprint(createLexicon("neptune2.estia.fr", 2, "plop"))
-#pprint(listWordsLexicon("neptune2.estia.fr", 2, "toto"))
-#pprint(addWordToLexicon("neptune2.estia.fr", 2, 1, "ta", "tatata", "pobj"))

@@ -9,15 +9,8 @@ Created on Fri May  5 09:22:02 2017
 import json
 import requests
 
-from annotateText import annotateText
-
-
-def getMagicToken():
-    """Return the magic token"""    
-    
-    with open("cred/tokenMagic.txt","r") as f:
-        magicToken = f.readline()
-    return magicToken
+from AnnotateText import annotateText
+from Token import getMagicToken, requestSeanceToken
 
 
 def getSeanceList(url):
@@ -33,23 +26,6 @@ def getSeanceList(url):
     seanceList = requests.get("http://"+url+"/api/seance/list?token="
                                    +getMagicToken()).json()
     return seanceList
-
-
-def requestSeanceToken(url, idSeance):
-    """Request a token from the server to access a specific seance
-    
-    Args:
-        url (string): the url of the server
-        idSeance (int): the id of the seance
-    Returns:
-        the Token needed (string)
-        
-    """    
-    
-    seanceToken = requests.get("http://"+url+"/api/seance/"
-                                        +str(idSeance)+"/token?token="
-                                        +getMagicToken()).text
-    return seanceToken
  
    
 def getMessageList(url, idSeance):
