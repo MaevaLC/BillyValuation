@@ -2,6 +2,5 @@
 
 Le projet billy
 
-# Install 
-
-pip install -r requirement.txt
+# INSTALL 
+pip install -r requirement.txt 
