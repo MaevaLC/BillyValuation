@@ -88,6 +88,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# perso
+# stuff related but not needed or confidential
+annotatedText/
 cred/
 pdf/
