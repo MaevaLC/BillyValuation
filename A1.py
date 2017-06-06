@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 30 17:48:47 2017
+Created on Tue Jun  6 10:58:39 2017
 
 @author: m.leclech
 """
 
 from keras.models import Sequential
-from keras.layers import Dense, Flatten
+from keras.layers import Dense
 import numpy
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -18,13 +18,12 @@ flatX = dataset[:,0:2730]
 X = []
 for listX in flatX:
     X.append(listX.reshape(shape))
-Y = dataset[:,2729]
+Y = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 print (Y)
 # create model
 model = Sequential()
 model.add(Dense(91, input_shape=(30, 91), activation='relu'))
 model.add(Dense(40, activation='relu'))
-model.add(Flatten())
 model.add(Dense(1, activation='sigmoid'))
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -33,10 +32,9 @@ print (model.summary())
 print(numpy.array(X).shape)
 print(Y.shape)
 
-
 # Fit the model
 model.fit(numpy.array(X), Y, epochs=10, batch_size=1, verbose=0)
-model.save('my_model.h5')
+model.save('my_modelA1.h5')
 
 # evaluate the model
 scores = model.evaluate(numpy.array(X), Y)

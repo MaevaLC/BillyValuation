@@ -64,4 +64,3 @@ for alpha in alphas:
         synapse_1 -= alpha * (layer_1.T.dot(layer_2_delta))
         synapse_0 -= alpha * (layer_0.T.dot(layer_1_delta))
 
-

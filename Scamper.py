@@ -26,18 +26,18 @@ def eliminate(jsonFile):
         
 
 files = []
-for element in os.listdir("annotatedText/"+url+"/"+str(seance)):
+for element in os.listdir("res/annotatedText/"+url+"/"+str(seance)):
     if element.endswith('.json'):
         files.append(element)
 
 for file in files:    
-    with open("annotatedText/"+url+"/"+str(seance)+"/"+file) as f:
+    with open("res/annotatedText/"+url+"/"+str(seance)+"/"+file) as f:
         annotatedText = json.load(f)
     sentence = ""
     for word in annotatedText["tokens"]:
         sentence += word["text"]["content"] + " "
     print(sentence)    
-    e = eliminate("annotatedText/"+url+"/"+str(seance)+"/"+file)
+    e = eliminate("res/annotatedText/"+url+"/"+str(seance)+"/"+file)
     sentenceE =""
     for word in e:
         sentenceE += word["text"]["content"] + " "

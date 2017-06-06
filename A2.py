@@ -33,10 +33,9 @@ print (model.summary())
 print(numpy.array(X).shape)
 print(Y.shape)
 
-
 # Fit the model
 model.fit(numpy.array(X), Y, epochs=10, batch_size=1, verbose=0)
-model.save('my_model.h5')
+model.save('my_modelA2.h5')
 
 # evaluate the model
 scores = model.evaluate(numpy.array(X), Y)
