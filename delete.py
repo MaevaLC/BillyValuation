@@ -6,13 +6,17 @@ Created on Tue Jun  6 17:08:14 2017
 """
 
 from random import *
+import csv
 import json
+import os
+import numpy as np
 
 
 randBinList = lambda n: [randint(0,1) for b in range(1,n+1)]
-url = "neptune2.estia.fr"
+
+url = "ideavaluation.estia.fr"
 seance = 2
-path = "res/annotatedText/"+url+"/"+str(seance)
+path = "annotatedText/"+url+"/"+str(seance)
 
 
 class Word:
@@ -54,17 +58,55 @@ def createListWords(pathFile):
     return listWords
 
 
-
-testDL = randBinList(30)
-testSF = createListWords(path+"/5a44e1ee157b9509529aa8a460683c4d.json")
-
 def delete (deleteList, sentence):
     temp = ""
     for i in range(len(deleteList)):
-        if str(deleteList[i]) == "1":
-            if i < len(sentence) :
+        if str(deleteList[i]) == "0":
+            if i < len(sentence):
                 temp += sentence[i].lemme + " "
-    print(temp)
+    return temp      
+            
 
-print(testDL)            
-delete(testDL, testSF)
+#files=[]
+#for element in os.listdir(path):
+#    if element.endswith('.json'):
+#        files.append(element)
+#for file in files:
+#    sentence = createListWords(path+"/"+file)
+#    for n in range(10):
+#        randomDL = randBinList(30)
+#        print(randomDL)
+#        print(delete(randomDL, sentence))
+#        
+        
+def featureDelete(deleteList, sentenceFeature):
+    result = list(sentenceFeature)
+    for i in range(len(deleteList)):
+        if str(deleteList[i]) == "1":
+            for j in range(i*92, (i+1)*92):
+                result[j] = 0
+    return result
+
+
+csvf = open("testV5.csv", "a") 
+csvd = open("deletionV5.csv", "a")  
+csva = open("answerV5.csv", "a")  
+# load data
+dataset = np.loadtxt("testV5.csv", delimiter=",")
+flatX_a = dataset[:,0:2760]
+for flatXelement in flatX_a:
+    for n in range(10):
+        out = csv.writer(csvf, delimiter=',', lineterminator = '\n')
+        out.writerow(flatXelement)
+        randomList = randBinList(30)
+        outD = csv.writer(csvd, delimiter=',', lineterminator = '\n')
+        outD.writerow(randomList)
+        answer = featureDelete(randomList, flatXelement)
+        outA = csv.writer(csva, delimiter=',', lineterminator = '\n')
+        outA.writerow(answer)
+csvf.close()
+csvd.close()
+csva.close()
+        
+    
+

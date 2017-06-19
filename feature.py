@@ -10,12 +10,13 @@ import json
 import os
 
 
-url = "neptune2.estia.fr"
+url = "ideavaluation.estia.fr"
 seance = 2
-path = "res/annotatedText/"+url+"/"+str(seance)
+path = "annotatedText/"+url+"/"+str(seance)
 
-featuresList = ["ADJ", "ADP", "ADV", "AFFIX", "CONJ", "DET", "NOUN", "NUM", "PRON",
-"PRT", "PUNCT", "UNKNOWN", "VERB", "X", "ABBREV", "ACOMP", "ADVCL", "ADVMOD",
+featListTag = ["ADJ", "ADP", "ADV", "AFFIX", "CONJ", "DET", "NOUN", "NUM", "PRON",
+"PRT", "PUNCT", "UNKNOWN", "VERB", "X"]
+featListLabel = ["ABBREV", "ACOMP", "ADVCL", "ADVMOD",
 "ADVPHMOD", "AMOD", "APPOS", "ATTR", "AUX", "AUXCAUS", "AUXPASS", "AUXVV", "CC",
 "CCOMP", "CONJ", "COP", "CSUBJ", "CSUBJPASS", "DEP", "DET", "DISCOURSE", "DISLOCATED",
 "DOBJ", "DTMOD", "EXPL", "FOREIGN", "GOESWITH", "IOBJ", "KW", "LIST", "MARK", "MWE",
@@ -25,6 +26,7 @@ featuresList = ["ADJ", "ADP", "ADV", "AFFIX", "CONJ", "DET", "NOUN", "NUM", "PRO
 "PRT", "PS", "QUANTMOD", "RCMOD", "RCMODREL", "RDROP", "REF", "REMNANT",
 "REPARANDUM", "ROOT", "SNUM", "SUFF", "SUFFIX", "TITLE", "TMOD", "TOPIC", "UNKNOWN",
 "VMOD", "VOCATIVE", "XCOMP"]
+featListOther = ["PARENT POSITION"]
 
 
 class Word:
@@ -72,7 +74,7 @@ def listIndex(featuresList, string):
             return k
 
             
-csvf = open("testV3.csv", "w") 
+csvf = open("testV5.csv", "w") 
 files = []
 for element in os.listdir(path):
     if element.endswith('.json'):
@@ -82,24 +84,27 @@ for file in files:
     listWords = createListWords(path+"/"+file)   
     if len(listWords) < 30 :
         for word in listWords:
-            wordFeature = [0]*len(featuresList)
-            coeff = 1
+            wordFeature = [0]*len(featListTag + featListLabel + featListOther)
+            coeff = 29/2
             while word.position != word.parent:
-                tagIndex = listIndex(featuresList, word.tag)
-                labelIndex = listIndex(featuresList, word.label)
+                tagIndex = listIndex(featListTag, word.tag)
+                labelIndex = listIndex(featListLabel, word.label) + len(featListTag)
+                parentPosition = word.parent
                 wordFeature[tagIndex] += coeff
                 wordFeature[labelIndex] += coeff
+                wordFeature[-1] = parentPosition
                 coeff = coeff/2
                 parent = listWords[word.parent]
                 word = parent
-            tagIndex = listIndex(featuresList, word.tag)
-            labelIndex = listIndex(featuresList, word.label)
+            tagIndex = listIndex(featListTag, word.tag)
+            labelIndex = listIndex(featListLabel, word.label) + len(featListTag)
             wordFeature[tagIndex] += coeff
             wordFeature[labelIndex] += coeff
+            wordFeature[-1] = word.position
             fileFeature += wordFeature
         rest = 30 - len(listWords)
         for i in range(rest):
-            fileFeature += [0]*len(featuresList)
+            fileFeature += [-1]*len(featListTag + featListLabel + featListOther)
         out = csv.writer(csvf, delimiter=',', lineterminator = '\n')
         out.writerow(fileFeature)
 csvf.close()
