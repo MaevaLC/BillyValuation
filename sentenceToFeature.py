@@ -7,7 +7,7 @@ Created on Fri Jun  9 16:27:20 2017
 
 #import csv
 #from src.AnnotateText import annotateText
-#with open("phrasesV4.csv", "r") as f:
+#with open("phrasesV3.csv", "r") as f:
 #    reader = csv.reader(f)
 #
 #    for row in reader:
@@ -15,12 +15,17 @@ Created on Fri Jun  9 16:27:20 2017
 #        annotateText("ideavaluation.estia.fr", 2, row[0])
 
 
-#creation of deletion table for the annotated text
+# creation of deletion table for the annotated text
 import csv
-csvf = open("deletionV4.csv", "w")
-for i in range(32):
-    output = [0]*30
+csvf = open("deletionV3.csv", "w")
+for i in range(721):
+    output = [0.0]*30
     out = csv.writer(csvf, delimiter=',', lineterminator = '\n')
     out.writerow(output)
 csvf.close()
+
+
+
+
+
 

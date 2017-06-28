@@ -26,7 +26,7 @@ featListLabel = ["ABBREV", "ACOMP", "ADVCL", "ADVMOD",
 "PRT", "PS", "QUANTMOD", "RCMOD", "RCMODREL", "RDROP", "REF", "REMNANT",
 "REPARANDUM", "ROOT", "SNUM", "SUFF", "SUFFIX", "TITLE", "TMOD", "TOPIC", "UNKNOWN",
 "VMOD", "VOCATIVE", "XCOMP"]
-featListOther = ["PARENT POSITION"]
+featListOther = [] #["PARENT POSITION", "NULLWORD"]
 
 
 class Word:
@@ -74,7 +74,7 @@ def listIndex(featuresList, string):
             return k
 
             
-csvf = open("testV5.csv", "w") 
+csvf = open("trainV3.csv", "w") 
 files = []
 for element in os.listdir(path):
     if element.endswith('.json'):
@@ -84,27 +84,27 @@ for file in files:
     listWords = createListWords(path+"/"+file)   
     if len(listWords) < 30 :
         for word in listWords:
-            wordFeature = [0]*len(featListTag + featListLabel + featListOther)
-            coeff = 29/2
-            while word.position != word.parent:
-                tagIndex = listIndex(featListTag, word.tag)
-                labelIndex = listIndex(featListLabel, word.label) + len(featListTag)
-                parentPosition = word.parent
-                wordFeature[tagIndex] += coeff
-                wordFeature[labelIndex] += coeff
-                wordFeature[-1] = parentPosition
-                coeff = coeff/2
-                parent = listWords[word.parent]
-                word = parent
+            wordFeature = [0.0]*len(featListTag + featListLabel + featListOther)
+            coeff = 1.0
+#            while word.position != word.parent:
+#                tagIndex = listIndex(featListTag, word.tag)
+#                labelIndex = listIndex(featListLabel, word.label) + len(featListTag)
+#                parentPosition = word.parent
+#                wordFeature[tagIndex] += coeff
+#                wordFeature[labelIndex] += coeff
+#                wordFeature[-1] = parentPosition
+#                coeff = coeff/2
+#                parent = listWords[word.parent]
+#                word = parent
             tagIndex = listIndex(featListTag, word.tag)
             labelIndex = listIndex(featListLabel, word.label) + len(featListTag)
             wordFeature[tagIndex] += coeff
             wordFeature[labelIndex] += coeff
-            wordFeature[-1] = word.position
+            #wordFeature[-2] = float(word.position/29)
             fileFeature += wordFeature
         rest = 30 - len(listWords)
         for i in range(rest):
-            fileFeature += [-1]*len(featListTag + featListLabel + featListOther)
+            fileFeature += [0.0]*(len(featListTag + featListLabel + featListOther))#-1) + [1.0]
         out = csv.writer(csvf, delimiter=',', lineterminator = '\n')
         out.writerow(fileFeature)
 csvf.close()

@@ -80,20 +80,27 @@ def delete (deleteList, sentence):
 #        
         
 def featureDelete(deleteList, sentenceFeature):
-    result = list(sentenceFeature)
+    result = []
+    c = 0
     for i in range(len(deleteList)):
-        if str(deleteList[i]) == "1":
-            for j in range(i*92, (i+1)*92):
-                result[j] = 0
+        if str(deleteList[i]) == "0":
+            for n in range(i*91,(i+1)*91):
+                result.append(sentenceFeature[n])
+        else :
+            c+=1
+    for j in range(c):
+        for k in range(91):
+            result.append(0.0)
+        #result.append(1.0)
     return result
 
 
-csvf = open("testV5.csv", "a") 
-csvd = open("deletionV5.csv", "a")  
-csva = open("answerV5.csv", "a")  
+csvf = open("trainV3.csv", "a") 
+csvd = open("deletionV3.csv", "a")  
+csva = open("answerV3.csv", "a")  
 # load data
-dataset = np.loadtxt("testV5.csv", delimiter=",")
-flatX_a = dataset[:,0:2760]
+dataset = np.loadtxt("trainV3.csv", delimiter=",")
+flatX_a = dataset[:,0:2730]
 for flatXelement in flatX_a:
     for n in range(10):
         out = csv.writer(csvf, delimiter=',', lineterminator = '\n')

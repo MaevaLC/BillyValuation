@@ -13,36 +13,24 @@ import numpy as np
 
 np.set_printoptions(threshold=np.inf)
 
+# parameters
 nb_words = 30
-nb_features = 92
+nb_features = 91
 deletion = 1
 
-sentenceMatrix = Sequential()
-sentenceMatrix.add(LSTM(nb_features, return_sequences=True, input_shape=(nb_words, nb_features)))
-
-deletionMatrix = Sequential()
-deletionMatrix.add(LSTM(deletion, return_sequences=True, input_shape=(nb_words, deletion)))
-
-mix = Sequential()
-mix.add(Merge([sentenceMatrix, deletionMatrix], mode='concat'))
-mix.add(Dense(122, activation='elu'))
-mix.add(Dense(102, activation='elu'))
-mix.add(Dense(nb_features, activation='elu'))
-
-
 # load data
-datasetF = np.loadtxt("testV5.csv", delimiter=",")
-datasetD = np.loadtxt("deletionV5.csv", delimiter=",")
-datasetA = np.loadtxt("answerV5.csv", delimiter=",")
-datasetFt = np.loadtxt("testV5.csv", delimiter=",")
-datasetDt = np.loadtxt("deletionV5.csv", delimiter=",")
-datasetAt = np.loadtxt("answerV5.csv", delimiter=",")
+datasetF = np.loadtxt("trainV2.csv", delimiter=",", dtype='float')
+datasetD = np.loadtxt("deletionV2.csv", delimiter=",", dtype='float')
+datasetA = np.loadtxt("answerV2.csv", delimiter=",", dtype='float')
+datasetFt = np.loadtxt("trainV2.csv", delimiter=",", dtype='float')
+datasetDt = np.loadtxt("deletionV2.csv", delimiter=",", dtype='float')
+datasetAt = np.loadtxt("answerV2.csv", delimiter=",", dtype='float')
 # split into input (X) and output (Y) variables
-shape_a = (30,92)
+shape_a = (30,nb_features)
 shape_b = (30,1)
-flatX_a = datasetF[:,0:2760]
+flatX_a = datasetF[:,0:(nb_words*nb_features)]
 flatX_b = datasetD[:,0:30]
-flatY = datasetA[:,0:2760]
+flatY = datasetA[:,0:(nb_words*nb_features)]
 X_a = []
 for listX_a in flatX_a:
     X_a.append(listX_a.reshape(shape_a))
@@ -52,11 +40,9 @@ for listX_b in flatX_b:
 Y = []
 for listY in flatY:
     Y.append(listY.reshape(shape_a))
-
-
-flatX_at = datasetFt[:,0:2760]
+flatX_at = datasetFt[:,0:(nb_words*nb_features)]
 flatX_bt = datasetDt[:,0:30]
-flatYt = datasetAt[:,0:2760]
+flatYt = datasetAt[:,0:(nb_words*nb_features)]
 X_at = []
 for listX_at in flatX_at:
     X_at.append(listX_at.reshape(shape_a))
@@ -69,43 +55,55 @@ for listYt in flatYt:
 
 
 # train
-listeN = [1]
+#listeN = [100]
+#listeM = [1]
 #listeN = [1,100,447,1000,2000,4477]
 #listeLR = [0.0001, 0.001, 0.01, 0.1, 1]
 listeN = [SGD(), RMSprop(lr = 0.001), Adagrad(), Adadelta(), Adam(), Adamax(), Nadam()]
+#listeN = [SGD(), RMSprop(lr = 0.001), Adagrad(), Adadelta(), Adam(), Adamax(), Nadam()]
+#listeM = ['mean_squared_error', 'mean_absolute_error', 'mean_absolute_percentage_error', 'mean_squared_logarithmic_error',
+#          'squared_hinge', 'hinge', 'binary_crossentropy',
+#          'kullback_leibler_divergence', 'poisson', 'cosine_proximity']
 listeM = ['mean_squared_error', 'mean_absolute_error', 'mean_absolute_percentage_error', 'mean_squared_logarithmic_error',
-          'squared_hinge', 'hinge', 'categorical_hinge', 'binary_crossentropy',
+          'squared_hinge', 'hinge', 'binary_crossentropy',
           'kullback_leibler_divergence', 'poisson', 'cosine_proximity']
-for n in listeN:
+#listeM = ['poisson', 'binary_crossentropy', 'mean_squared_logarithmic_error']
+for n in listeN:    
     for m in listeM:
-        callbacks = [EarlyStopping(monitor='loss', patience=2, min_delta=0.01, verbose=1, mode ="min")]
-        opti = n
+        # create RNN
+        sentenceMatrix = Sequential()
+        sentenceMatrix.add(LSTM(nb_features, return_sequences=True, input_shape=(nb_words, nb_features)))
         
+        deletionMatrix = Sequential()
+        deletionMatrix.add(LSTM(deletion, return_sequences=True, input_shape=(nb_words, deletion)))
         
+        mix = Sequential()
+        mix.add(Merge([sentenceMatrix, deletionMatrix], mode='concat'))
+        mix.add(Dense(122, activation='relu'))
+        mix.add(Dense(102, activation='relu'))
+        mix.add(Dense(nb_features, activation='sigmoid'))        
+        
+        # compile
+        callbacks = [EarlyStopping(monitor='loss', patience=5, min_delta=0.01, verbose=1, mode ="min")]       
         mix.compile(loss=m,
-                    optimizer=opti,
-                    metrics=['accuracy'])
-        
+                    optimizer=n,
+                    metrics=['binary_accuracy'])        
     
-        # description
-        #sentenceMatrix.summary()
-        
-        #deletionMatrix.summary()
-        #mix.summary()
-        
-        
+        # fit
         print("\n" + str(n))
+        print(str(m) + "\n")
         mix.fit([np.array(X_a), np.array(X_b)], np.array(Y),
-                    batch_size=100, epochs=150, verbose=2,
+                    batch_size=100, epochs=250, verbose=0,
                     callbacks=callbacks, shuffle=True)
         
-        scores = mix.evaluate([np.array(X_at), np.array(X_bt)], np.array(Yt), verbose = 2)
+        #print scores
+        scores = mix.evaluate([np.array(X_at), np.array(X_bt)], np.array(Yt), verbose = 0)
         print("\n%s: %.2f%%" % (mix.metrics_names[1], scores[1]*100))
         
-        mix.save('modelF'+str(scores[1]*100)+'.h5')
+        #save
+        #mix.save('modelF'+str(scores[1]*100)+'.h5')
 
-
-
+        #reload model and predict
         #mixt = load_model("modelF97.8159347083.h5")
         predictions = mix.predict([np.array(X_at), np.array(X_bt)])
-        print(predictions[0][0])
+        print(np.round(predictions[0][0], 2))
