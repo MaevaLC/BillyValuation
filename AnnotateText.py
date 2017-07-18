@@ -11,7 +11,7 @@ import json
 import os
 import requests  
 
-from src.Token import requestGoogleToken
+from googleToken import getToken
 
 
 def hashSentence(stringToHash):
@@ -55,10 +55,8 @@ def annotateText(url, seance, message):
                                   "encodingType": "UTF8",
                                   },
                           headers = {"authorization": "Bearer "
-                                     + requestGoogleToken(url)}
+                                     + getToken('cred/ideavaluation-fa9d97a5c0f0.json')}
                           ).json()
         #json named after the message content
         with open(path+"/"+hashSentence(message)+".json", 'w') as f:
             f.write(json.dumps(r, indent=4))
-
-annotateText("ideavaluation.estia.fr", 2, "coucou")

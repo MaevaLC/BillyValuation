@@ -76,7 +76,7 @@ def listIndex(featuresList, string):
             return k
 
             
-csvf = open("trainV3.csv", "w") 
+csvf = open("GANtrainV3.csv", "w") 
 files = []
 for element in os.listdir(path):
     if element.endswith('.json'):
