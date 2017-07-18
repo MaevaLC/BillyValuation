@@ -19,12 +19,12 @@ nb_features = 91
 deletion = 1
 
 # load data
-datasetF = np.loadtxt("trainV2.csv", delimiter=",", dtype='float')
-datasetD = np.loadtxt("deletionV2.csv", delimiter=",", dtype='float')
-datasetA = np.loadtxt("answerV2.csv", delimiter=",", dtype='float')
-datasetFt = np.loadtxt("trainV2.csv", delimiter=",", dtype='float')
-datasetDt = np.loadtxt("deletionV2.csv", delimiter=",", dtype='float')
-datasetAt = np.loadtxt("answerV2.csv", delimiter=",", dtype='float')
+datasetF = np.loadtxt("trainV3.csv", delimiter=",", dtype='float')
+datasetD = np.loadtxt("deletionV3.csv", delimiter=",", dtype='float')
+datasetA = np.loadtxt("answerV3.csv", delimiter=",", dtype='float')
+datasetFt = np.loadtxt("trainV3.csv", delimiter=",", dtype='float')
+datasetDt = np.loadtxt("deletionV3.csv", delimiter=",", dtype='float')
+datasetAt = np.loadtxt("answerV3.csv", delimiter=",", dtype='float')
 # split into input (X) and output (Y) variables
 shape_a = (30,nb_features)
 shape_b = (30,1)
@@ -64,10 +64,10 @@ listeN = [SGD(), RMSprop(lr = 0.001), Adagrad(), Adadelta(), Adam(), Adamax(), N
 #listeM = ['mean_squared_error', 'mean_absolute_error', 'mean_absolute_percentage_error', 'mean_squared_logarithmic_error',
 #          'squared_hinge', 'hinge', 'binary_crossentropy',
 #          'kullback_leibler_divergence', 'poisson', 'cosine_proximity']
-listeM = ['mean_squared_error', 'mean_absolute_error', 'mean_absolute_percentage_error', 'mean_squared_logarithmic_error',
-          'squared_hinge', 'hinge', 'binary_crossentropy',
-          'kullback_leibler_divergence', 'poisson', 'cosine_proximity']
-#listeM = ['poisson', 'binary_crossentropy', 'mean_squared_logarithmic_error']
+#listeM = ['mean_squared_error', 'mean_absolute_error', 'mean_absolute_percentage_error', 'mean_squared_logarithmic_error',
+#          'squared_hinge', 'hinge', 'binary_crossentropy',
+#          'kullback_leibler_divergence', 'poisson', 'cosine_proximity']
+listeM = ['mean_squared_error']
 for n in listeN:    
     for m in listeM:
         # create RNN
@@ -84,7 +84,7 @@ for n in listeN:
         mix.add(Dense(nb_features, activation='sigmoid'))        
         
         # compile
-        callbacks = [EarlyStopping(monitor='loss', patience=5, min_delta=0.01, verbose=1, mode ="min")]       
+        callbacks = [EarlyStopping(monitor='loss', patience=50, min_delta=0.01, verbose=1, mode ="min")]       
         mix.compile(loss=m,
                     optimizer=n,
                     metrics=['binary_accuracy'])        

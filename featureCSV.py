@@ -5,6 +5,8 @@ Created on Fri Jun  2 16:03:05 2017
 @author: m.leclech
 """
 
+""" SCRIPT TO CREATE FEATURE .CSV WITH JSON FILE """
+
 import csv
 import json
 import os
